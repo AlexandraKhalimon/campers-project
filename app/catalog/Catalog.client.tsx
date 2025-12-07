@@ -21,8 +21,8 @@ export default function CatalogClient() {
             <div></div>
             <div>
                 <ul className={css.list}>
-                    {campers.map(campers =>
-                        <li><CamperCard camper={campers} /></li>
+                    {campers.map(camper =>
+                        <li key={camper.id}><CamperCard camper={camper} /></li>
                     )}
                 </ul>
             </div>
