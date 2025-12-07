@@ -1,0 +1,139 @@
+.form {
+    border: 1px solid #dadde1;
+    border-radius: 10px;
+    padding: 44px 57px;
+    width: 641px;
+    height: 588px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #101828;
+    margin-bottom: 8px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #6c717b;
+    margin-bottom: 24px;
+}
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.input {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #6c717b;
+    border: transparent;
+    border-radius: 12px;
+    padding: 18px 18px;
+    width: 527px;
+    height: 60px;
+    background-color: #f7f7f7;
+}
+
+.error {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    min-height: 18px;
+    color: #e44848;
+}
+
+:global(.flatpickr-calendar) {
+    border: 1px solid #dadde1;
+    border-radius: 12px;
+    width: 276px;
+    height: 274px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+    
+}
+
+:global(.flatpickr-day) {
+    color: #101828;
+    border-radius: 6px;
+}
+
+:global(.flatpickr-day:hover) {
+    background-color: #475467;
+}
+
+:global(.flatpickr-day.today) {
+    background-color: #475467;
+    color: #fff;
+}
+
+:global(.flatpickr-day.selected) {
+    background-color:#475467;;
+    color: #fff;
+}
+
+:global(.flatpickr-months) {
+    background-color: #f7f7f7;
+    color: #101828;
+    font-weight: 600;
+}
+
+:global(.flatpickr-weekday) {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: center;
+    color: #475467;
+}
+
+.textarea {
+    border-radius: 10px;
+    padding: 18px 18px;
+    width: 527px;
+    height: 118px;
+    border: transparent;
+    background-color: #f7f7f7;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #6c717b;
+}
+
+.input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #6c717b;
+}
+
+.button {
+    border-radius: 200px;
+    padding: 16px 60px;
+    width: 166px;
+    height: 56px;
+    background-color: #e44848;
+    border: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #d84343;
+}
+
+
+
+
+

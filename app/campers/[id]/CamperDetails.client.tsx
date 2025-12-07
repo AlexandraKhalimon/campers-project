@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import fetchCamperById from "@/lib/api";
 import Image from "next/image";
+import { useState } from "react";
+import BookingForm from "@/components/BookingForm/BookingForm";
 
 // import { Camper } from "@/types/camper";
 
@@ -25,6 +27,8 @@ export default function CamperDetailsClient() {
         return <p>Something went wrong.</p>;
     }
 
+    const [activeTab, setActiveTab] = useState<string>("features");
+
 
     const reviews = camper.reviews;
     const totalReviews = reviews.length;
@@ -32,7 +36,6 @@ export default function CamperDetailsClient() {
         ? 0
         : (reviews.reduce((acc, review) => (acc + review.reviewer_rating), 0) / totalReviews).toFixed(1);
     const price = camper.price.toFixed(2);
-    
     const images = camper.gallery || [];
     
     
@@ -67,12 +70,24 @@ export default function CamperDetailsClient() {
                                 height={312}
                                 className={css.image}
                             />
-                    </li>)}
+                        </li>)}
                 </ul>
                 <p className={css.description}>{camper.description}</p>
+                <div className={css.tabs_panel}>
+                    <button
+                        onClick={() => setActiveTab("features")}
+                        className={activeTab === "features" ? css.activeBtn : ""}>Features
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("reviews")}
+                        className={activeTab === "reviews" ? css.activeBtn : ""}>Reviews
+                    </button>
+                </div>
+                <hr className={css.hr} />
+                <div>
+                    <BookingForm/>
+                </div>
             </div>
-            <div></div>
-            <div></div>
         </>
     )
 }
