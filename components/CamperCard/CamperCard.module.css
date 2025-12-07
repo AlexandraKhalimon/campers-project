@@ -1,0 +1,93 @@
+.card {
+    border: 1px solid #dadde1;
+    border-radius: 20px;
+    padding: 24px;
+    width: 888px;
+    height: 368px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.photo {
+    display: block;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container div {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33333;
+    color: #101828;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33333;
+    color: #101828;
+}
+
+.favourite {
+    border: transparent;
+    background-color: transparent;
+}
+
+.list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #101828;
+}
+
+.description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #475467;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.btn {
+    border-radius: 200px;
+    padding: 16px 40px;
+    width: 166px;
+    height: 56px;
+    margin-top: 24px;
+    background-color: #e44848;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: #fff;
+    border: transparent;
+}
