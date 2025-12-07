@@ -1,0 +1,78 @@
+"use client"
+
+import css from "./page.module.css";
+import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import fetchCamperById from "@/lib/api";
+import Image from "next/image";
+
+// import { Camper } from "@/types/camper";
+
+export default function CamperDetailsClient() {
+    const { id } = useParams<{id:string}>();
+
+    const { data: camper, isLoading, error } = useQuery({
+        queryKey: ['camper', id],
+        queryFn: () => fetchCamperById(id),
+        refetchOnMount: false,
+    });
+
+    if (isLoading) {
+        return <p>Loading, please wait...</p>;
+    }
+
+    if (error || !camper) {
+        return <p>Something went wrong.</p>;
+    }
+
+
+    const reviews = camper.reviews;
+    const totalReviews = reviews.length;
+    const avarageScore = totalReviews === 0
+        ? 0
+        : (reviews.reduce((acc, review) => (acc + review.reviewer_rating), 0) / totalReviews).toFixed(1);
+    const price = camper.price.toFixed(2);
+    
+    const images = camper.gallery || [];
+    
+    
+    return (
+        <>
+            <div className={css.container}>
+                <div className={css.info}>
+                    <h2 className={css.name}>{camper.name}</h2>
+                    <ul className={css.list}>
+                        <li>
+                            <svg width={16} height={16}>
+                                <use href="/icons.svg#icon-star_gold"></use>
+                            </svg>
+                            <p>{`${avarageScore} (${totalReviews}Reviews)`}</p>
+                        </li>
+                        <li>
+                            <svg width={16} height={16}>
+                                <use href="/icons.svg#icon-map"></use>
+                            </svg>
+                            <p>{camper.location}</p>
+                        </li>
+                    </ul>
+                    <p className={css.price}>{`€${price}`}</p>
+                </div>
+                <ul className={css.images}>
+                    {images.map((image) =>
+                        <li key={image.original}>
+                            <Image
+                                src={image.original}
+                                alt="Camper Photo"
+                                width={292}
+                                height={312}
+                                className={css.image}
+                            />
+                    </li>)}
+                </ul>
+                <p className={css.description}>{camper.description}</p>
+            </div>
+            <div></div>
+            <div></div>
+        </>
+    )
+}
