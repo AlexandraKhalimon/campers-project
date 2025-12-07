@@ -36,7 +36,7 @@ const initialValues: BookingFormValues = {
 
 export default function BookingForm() {
     const fieldId = useId();
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const [selectedDate, setSelectedDate] = useState<Date>();
 
     //Стан для контролю рендерингу календаря Flatpickr після монтування
     const [isMounted, setIsMounted] = useState(false);
@@ -86,7 +86,7 @@ export default function BookingForm() {
                             {isMounted
                                 ? <div className={css.calendar}>
                                     <Flatpickr
-                                        value={selectedDate}
+                                        value={selectedDate || ""}
                                         onChange={([date]) => {
                                             setSelectedDate(date);
                                             setFieldValue("bookingDate", date)
