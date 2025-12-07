@@ -1,0 +1,20 @@
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    border-radius: 100px;
+    padding: 12px 18px;
+    height: 48px;
+    background: #f2f4f7;
+    mix-blend-mode: multiply;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #101828;
+}

@@ -1,0 +1,11 @@
+.featuresBox {
+    width: 524px;
+    height: 104px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 100px;
+}

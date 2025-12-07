@@ -2,11 +2,9 @@
 
 import css from "./BookingForm.module.css";
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/light.css";
-
-// import DatePicker from "react-datepicker";
 import * as Yup from "yup";
 
 const BookingFormSchema = Yup.object().shape({
@@ -38,7 +36,13 @@ const initialValues: BookingFormValues = {
 
 export default function BookingForm() {
     const fieldId = useId();
-    const [selectedDate, setSelectedDate] = useState<Date>();
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+    //Стан для контролю рендерингу календаря Flatpickr після монтування
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const handleSubmit = (
         values: BookingFormValues,
@@ -56,53 +60,63 @@ export default function BookingForm() {
                     <h3 className={css.title}>Book your campervan now</h3>
                     <p className={css.text}>Stay connected! We are always ready to help you.</p>
                     <div className={css.formContainer}>
-                        <label htmlFor={`${fieldId}-name`}></label>
-                        <Field
-                            type="text"
-                            name="name"
-                            id={`${fieldId}-name`}
-                            placeholder="Name*"
-                            className={css.input} />
-                        <ErrorMessage name="name" component="div" className={css.error} />
+                        <div>
+                            <label htmlFor={`${fieldId}-name`}></label>
+                            <Field
+                                type="text"
+                                name="name"
+                                id={`${fieldId}-name`}
+                                placeholder="Name*"
+                                className={css.input} />
+                            <ErrorMessage name="name" component="span" className={css.error} />
+                        </div>
 
-                        <label htmlFor={`${fieldId}-email`}></label>
-                        <Field
-                            type="email"
-                            name="email"
-                            id={`${fieldId}-email`}
-                            placeholder="Email*"
-                            className={css.input} />
-                        <ErrorMessage name="email" component="span" className={css.error} />
+                        <div>
+                            <label htmlFor={`${fieldId}-email`}></label>
+                            <Field
+                                type="email"
+                                name="email"
+                                id={`${fieldId}-email`}
+                                placeholder="Email*"
+                                className={css.input} />
+                            <ErrorMessage name="email" component="span" className={css.error} />
+                        </div>
 
-                        <div className={css.calendar}>
-                            <Flatpickr
-                                value={selectedDate}
-                                onChange={([date]) => {
-                                    setSelectedDate(date);
-                                    setFieldValue("bookingDate", date)
-                                }}
-                                options={{
-                                    altFormat: "F j, Y",
-                                    dateFormat: "Y-m-d",
-                                    locale: {
-                                        firstDayOfWeek: 1
-                                    }
-                                }}
-                                placeholder="Booking date*"
-                                className={css.input}
-                            />
-                            <ErrorMessage name="bookingDate" component="span" className={css.error} />
+                        <div>
+                            {isMounted
+                                ? <div className={css.calendar}>
+                                    <Flatpickr
+                                        value={selectedDate}
+                                        onChange={([date]) => {
+                                            setSelectedDate(date);
+                                            setFieldValue("bookingDate", date)
+                                        }}
+                                        options={{
+                                            altFormat: "F j, Y",
+                                            dateFormat: "Y-m-d",
+                                            locale: {
+                                                firstDayOfWeek: 1
+                                            }
+                                        }}
+                                        placeholder="Booking date*"
+                                        className={css.input}
+                                    />
+                                    <ErrorMessage name="bookingDate" component="span" className={css.error} />
+                                </div>
+                                : <input type="text" placeholder="Booking date*" className={css.input} disabled />
+                            }
                         </div>
                         
-
-                        <label htmlFor={`${fieldId}-comment`}></label>
-                        <Field
-                            as="textarea"
-                            type="text"
-                            name="comment"
-                            id={`${fieldId}-comment`}
-                            placeholder="Comment"
-                            className={css.textarea} />
+                        <div>
+                            <label htmlFor={`${fieldId}-comment`}></label>
+                            <Field
+                                as="textarea"
+                                type="text"
+                                name="comment"
+                                id={`${fieldId}-comment`}
+                                placeholder="Comment"
+                                className={css.textarea} />
+                        </div>
                     </div>
                     <button type="submit" className={css.button}>Send</button>
                 </Form>

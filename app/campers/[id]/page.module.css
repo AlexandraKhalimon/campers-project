@@ -104,3 +104,11 @@
     border: none;
     background-color: #dadde1;
 }
+
+.box {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}

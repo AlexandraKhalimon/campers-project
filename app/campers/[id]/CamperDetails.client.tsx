@@ -7,6 +7,7 @@ import fetchCamperById from "@/lib/api";
 import Image from "next/image";
 import { useState } from "react";
 import BookingForm from "@/components/BookingForm/BookingForm";
+import CamperDetails from "@/components/CamperDetails/CamperDetails";
 
 // import { Camper } from "@/types/camper";
 
@@ -84,7 +85,8 @@ export default function CamperDetailsClient() {
                     </button>
                 </div>
                 <hr className={css.hr} />
-                <div>
+                <div className={css.box}>
+                    <CamperDetails camper={camper}/>
                     <BookingForm/>
                 </div>
             </div>
