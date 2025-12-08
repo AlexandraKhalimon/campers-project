@@ -12,8 +12,8 @@ export default function CatalogClient() {
     const { favorites, setFavorite } = useFavoritesStore();
 
     useEffect(() => {
-  setCampersList(filters);
-}, [filters.location, filters.type, filters.equipment.join(',')]);
+        setCampersList(filters);
+    }, [filters.location, filters.type, filters.equipment.join(',')]);
 
     
     return (

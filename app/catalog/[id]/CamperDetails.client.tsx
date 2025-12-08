@@ -8,8 +8,8 @@ import Image from "next/image";
 import { useState } from "react";
 import BookingForm from "@/components/BookingForm/BookingForm";
 import CamperDetails from "@/components/CamperDetails/CamperDetails";
-
-// import { Camper } from "@/types/camper";
+import Loader from "@/app/loading";
+import NotFound from "@/app/not-found";
 
 export default function CamperDetailsClient() {
     const { id } = useParams<{id:string}>();
@@ -21,11 +21,11 @@ export default function CamperDetailsClient() {
     });
 
     if (isLoading) {
-        return <p>Loading, please wait...</p>;
+        return <Loader/>;
     }
 
     if (error || !camper) {
-        return <p>Something went wrong.</p>;
+        return <NotFound/>;
     }
 
     const [activeTab, setActiveTab] = useState<string>("features");
@@ -41,7 +41,6 @@ export default function CamperDetailsClient() {
     
     
     return (
-        <>
             <div className={css.container}>
                 <div className={css.info}>
                     <h2 className={css.name}>{camper.name}</h2>
@@ -90,6 +89,5 @@ export default function CamperDetailsClient() {
                     <BookingForm/>
                 </div>
             </div>
-        </>
     )
 }

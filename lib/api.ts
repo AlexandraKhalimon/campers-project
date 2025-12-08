@@ -63,7 +63,7 @@ export const fetchCampers = async ({
     return response.data;
 }
 
-export const fetchCamperById = async(camperId: string): Promise<Camper> => {
+const fetchCamperById = async(camperId: string): Promise<Camper> => {
     const response = await axios.get<Camper>(`/campers/${camperId}`);
     return response.data
 }
