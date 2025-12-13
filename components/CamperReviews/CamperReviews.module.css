@@ -1,0 +1,48 @@
+.list {
+    width: 631px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 44px;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: 172px;
+    margin-bottom: 16px;
+}
+
+.avatar{
+    position: relative;
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+    background-color: #f2f4f7;
+}
+
+.avatar > p {
+    position: absolute;
+    top: 15px;
+    left: 21px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33;
+    color: #e44848;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #101828
+}
+
+.comment {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #475467;
+}

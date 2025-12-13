@@ -13,21 +13,21 @@ export default function CamperReviews({reviews}:ReviewsProps) {
     }
     
     return (
-        <ul>
+        <ul className={css.list}>
             {reviews.map(review =>
                 <li>
-                    <div>
-                        <span>
-                            {getAvatar(review.reviewer_name)}
-                        </span>
+                    <div className={css.user}>
+                        <div className={css.avatar}>
+                            <p>{getAvatar(review.reviewer_name)}</p>
+                        </div>
                         <div>
-                            <p>{review.reviewer_name}</p>
+                            <p className={css.name}>{review.reviewer_name}</p>
                             <div>
                                 {/* Rating */}
                             </div>
                         </div>
                     </div>
-                    <p>{review.comment}</p>
+                    <p className={css.comment}>{review.comment}</p>
                 </li>
             )}
         </ul>
