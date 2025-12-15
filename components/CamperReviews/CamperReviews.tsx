@@ -11,6 +11,8 @@ export default function CamperReviews({reviews}:ReviewsProps) {
         const initial = name.charAt(0).toUpperCase();
         return initial;
     }
+
+    const ratings = [1, 2, 3, 4, 5];
     
     return (
         <ul className={css.list}>
@@ -20,10 +22,18 @@ export default function CamperReviews({reviews}:ReviewsProps) {
                         <div className={css.avatar}>
                             <p>{getAvatar(review.reviewer_name)}</p>
                         </div>
-                        <div>
+                        <div className={css.ratingInfo}>
                             <p className={css.name}>{review.reviewer_name}</p>
                             <div>
-                                {/* Rating */}
+                                {ratings.map(star =>
+                                    <svg width={16} height={16}>
+                                        <use href={
+                                            star <= review.reviewer_rating
+                                                ? "/icons.svg#icon-star_gold"
+                                                : "/icons.svg#icon-star"
+                                        }></use>
+                                    </svg>
+                                )}
                             </div>
                         </div>
                     </div>
